@@ -1,0 +1,4 @@
+Instructions:
+1. To choose the spot where you want to place your symbol (X or O), enter the row and columns as r-c.
+2. r is the row number, ranging from 1 to number of rows, inclusive.
+3. c is the column number, ranging from 1 to number of columns, inclusive.
