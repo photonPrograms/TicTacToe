@@ -63,6 +63,8 @@ def play2p(nrow = 3, ncol = 3, consec = 3):
         disp_board(board, nrow, ncol)
 
         print(f"{p[k]['name']} plays the turn {turn}.")
+
+        # placing the symbols at the turn
         while True:
             coord = input().split("-")
             r, c = int(coord[0]), int(coord[1])
@@ -75,6 +77,7 @@ def play2p(nrow = 3, ncol = 3, consec = 3):
             else:
                 print("Out of bounds. Enter valid coordinates.")
 
+        # checking for victory along rows
         for i in range(nrow):
             for j in range(ncol - consec + 1):
                 sym = board[i][j]
@@ -89,6 +92,7 @@ def play2p(nrow = 3, ncol = 3, consec = 3):
                     winner = p[k]["name"] if sym == p[k]["sym"] else p[0 if k else 1]["name"]
                     return winner
 
+        # checking for victory along columns
         for j in range(ncol):
             for i in range(nrow - consec + 1):
                 sym = board[i][j]
@@ -103,7 +107,9 @@ def play2p(nrow = 3, ncol = 3, consec = 3):
                     winner = p[k]["name"] if sym == p[k]["sym"] else p[0 if k else 1]["name"]
                     return winner
 
+        # checking for victory along diagonals
         for i in range(nrow - consec + 1):
+            # \ diagonals
             for j in range(ncol - consec + 1):
                 sym = board[i][j]
                 if sym == ".":
@@ -117,6 +123,7 @@ def play2p(nrow = 3, ncol = 3, consec = 3):
                     winner = p[k]["name"] if sym == p[k]["sym"] else p[0 if k else 1]["name"]
                     return winner
 
+            # / diagonals
             for j in reversed(range(consec - 1, ncol)):
                 sym = board[i][j]
                 if sym == ".":

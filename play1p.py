@@ -85,7 +85,8 @@ def play1p(nrow = 3, ncol = 3, consec = 3):
             else:
                 if k == 0:
                     print("Out of bounds. Enter valid coordinates.")
-
+        
+        # checking along for victory along rows
         for i in range(nrow):
             for j in range(ncol - consec + 1):
                 sym = board[i][j]
@@ -100,6 +101,7 @@ def play1p(nrow = 3, ncol = 3, consec = 3):
                     winner = p[k]["name"] if sym == p[k]["sym"] else p[0 if k else 1]["name"]
                     return winner
 
+        # checking for victory along columns
         for j in range(ncol):
             for i in range(nrow - consec + 1):
                 sym = board[i][j]
@@ -114,7 +116,9 @@ def play1p(nrow = 3, ncol = 3, consec = 3):
                     winner = p[k]["name"] if sym == p[k]["sym"] else p[0 if k else 1]["name"]
                     return winner
 
+        # checking for victory along diagonals
         for i in range(nrow - consec + 1):
+            # checking for victory along \ diagonals
             for j in range(ncol - consec + 1):
                 sym = board[i][j]
                 if sym == ".":
@@ -128,6 +132,7 @@ def play1p(nrow = 3, ncol = 3, consec = 3):
                     winner = p[k]["name"] if sym == p[k]["sym"] else p[0 if k else 1]["name"]
                     return winner
 
+            # checking for victory along / diagonals
             for j in reversed(range(consec - 1, ncol)):
                 sym = board[i][j]
                 if sym == ".":
